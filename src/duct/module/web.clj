@@ -1,6 +1,5 @@
 (ns duct.module.web
-  (:require [clojure.java.io :as io]
-            [clojure.string :as str]
+  (:require [clojure.string :as str]
             [duct.core :as core]
             [duct.core.env :as env]
             [duct.core.merge :as merge]
@@ -89,36 +88,6 @@
    :duct.core/handler
    {:middleware ^:distinct [(ig/ref :duct.middleware.web/not-found)
                             (ig/ref :duct.middleware.web/format)
-                            (ig/ref :duct.middleware.web/defaults)]}})
-
-(def ^:private error-400 (io/resource "duct/module/web/errors/400.html"))
-(def ^:private error-404 (io/resource "duct/module/web/errors/404.html"))
-(def ^:private error-405 (io/resource "duct/module/web/errors/405.html"))
-(def ^:private error-500 (io/resource "duct/module/web/errors/500.html"))
-
-(defn- site-ring-defaults [project-ns]
-  ^:demote {:params    {:urlencoded true, :multipart true, :nested true, :keywordize true}
-            :cookies   true
-            :session   {:flash true, :cookie-attrs {:http-only true, :same-site :strict}}
-            :security  {:anti-forgery         true
-                        :xss-protection       {:enable? true, :mode :block}
-                        :frame-options        :sameorigin
-                        :content-type-options :nosniff}
-            :static    {:resources ["duct/module/web/public"
-                                    (str (name-to-path project-ns) "/public")]}
-            :responses {:not-modified-responses true
-                        :absolute-redirects     true
-                        :content-types          true
-                        :default-charset        "utf-8"}})
-
-(defn- site-config [project-ns]
-  {:duct.handler.static/bad-request           (html-response error-400)
-   :duct.handler.static/not-found             (html-response error-404)
-   :duct.handler.static/method-not-allowed    (html-response error-405)
-   :duct.handler.static/internal-server-error (html-response error-500)
-   :duct.middleware.web/defaults              (site-ring-defaults project-ns)
-   :duct.core/handler
-   {:middleware ^:distinct [(ig/ref :duct.middleware.web/not-found)
                             (ig/ref :duct.middleware.web/defaults)]}})
 
 (defn- apply-web-module [config options module-config]
