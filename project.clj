@@ -1,6 +1,6 @@
-(defproject duct/module.web "0.6.3"
-  :description "Duct module for running web applications"
-  :url "https://github.com/duct-framework/module.web"
+(defproject org.clojars.athos/duct.module.web.thin-api "0.6.4-SNAPSHOT"
+  :description "Duct module for running thin web API"
+  :url "https://github.com/athos/duct.module.web.thin-api"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.9.0"]
