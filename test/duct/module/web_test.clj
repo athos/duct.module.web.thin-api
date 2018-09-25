@@ -123,7 +123,6 @@
                  {:router (ig/ref :duct/router)
                   :middleware
                   [(ig/ref :duct.middleware.web/not-found)
-                   (ig/ref :duct.middleware.web/webjars)
                    (ig/ref :duct.middleware.web/defaults)
                    (ig/ref :duct.middleware.web/log-requests)
                    (ig/ref :duct.middleware.web/log-errors)
@@ -148,7 +147,6 @@
                  {:port 3000
                   :handler (ig/ref :duct.core/handler)
                   :logger  (ig/ref :duct/logger)}
-                 :duct.middleware.web/webjars {}
                  :duct.middleware.web/stacktrace {}
                  :duct.handler.static/bad-request
                  {:headers {"Content-Type" "text/html; charset=UTF-8"}

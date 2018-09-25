@@ -5,7 +5,6 @@
             [muuntaja.middleware :as mm]
             [ring.middleware.defaults :refer [wrap-defaults]]
             [ring.middleware.stacktrace :refer [wrap-stacktrace]]
-            [ring.middleware.webjars :refer [wrap-webjars]]
             [ring.util.response :as response]
             [duct.core.merge :as merge]))
 
@@ -112,8 +111,8 @@
 (defmethod ig/init-key ::defaults [_ defaults]
   #(wrap-defaults % defaults))
 
-(defmethod ig/init-key ::webjars [_ {:keys [path] :or {path "/assets"}}]
-  #(wrap-webjars % path))
+(defmethod ig/init-key ::webjars [_ _]
+  (throw (ex-info (str "duct.module.web.thin-api does not support " ::webjars) {})))
 
 (defmethod ig/init-key ::stacktrace [_ options]
   #(wrap-stacktrace % options))

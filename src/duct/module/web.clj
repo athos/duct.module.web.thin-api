@@ -116,11 +116,9 @@
    :duct.handler.static/not-found             (html-response error-404)
    :duct.handler.static/method-not-allowed    (html-response error-405)
    :duct.handler.static/internal-server-error (html-response error-500)
-   :duct.middleware.web/webjars               {}
    :duct.middleware.web/defaults              (site-ring-defaults project-ns)
    :duct.core/handler
    {:middleware ^:distinct [(ig/ref :duct.middleware.web/not-found)
-                            (ig/ref :duct.middleware.web/webjars)
                             (ig/ref :duct.middleware.web/defaults)]}})
 
 (defn- apply-web-module [config options module-config]

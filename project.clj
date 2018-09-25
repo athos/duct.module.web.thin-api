@@ -13,8 +13,7 @@
                  [org.webjars/normalize.css "5.0.0"]
                  [ring/ring-core "1.6.3"]
                  [ring/ring-devel "1.6.3"]
-                 [ring/ring-defaults "0.3.1"]
-                 [ring-webjars "0.2.0"]]
+                 [ring/ring-defaults "0.3.1"]]
   :profiles
   {:dev {:dependencies [[compojure "1.6.0"]
                         [ring/ring-mock "0.3.2"]]}})
