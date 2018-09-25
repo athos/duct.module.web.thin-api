@@ -7,7 +7,6 @@
                  [duct/core "0.6.1"]
                  [duct/logger "0.2.1"]
                  [duct/server.http.jetty "0.2.0"]
-                 [compojure "1.6.0"]
                  [integrant "0.6.2"]
                  [metosin/muuntaja "0.4.1"]
                  [org.slf4j/slf4j-nop "1.7.25"]
@@ -17,4 +16,5 @@
                  [ring/ring-defaults "0.3.1"]
                  [ring-webjars "0.2.0"]]
   :profiles
-  {:dev {:dependencies [[ring/ring-mock "0.3.2"]]}})
+  {:dev {:dependencies [[compojure "1.6.0"]
+                        [ring/ring-mock "0.3.2"]]}})
