@@ -131,13 +131,16 @@
                       (error-configs (get-environment config options))))
 
 (defmethod ig/init-key :duct.module/web [_ options]
-  {:req #{:duct/logger}
-   :fn  #(apply-web-module % options base-config)})
+  (throw (ex-info (str "duct.module.web.thin-api does not support " :duct.module/web) {})))
 
 (defmethod ig/init-key ::api [_ options]
-  {:req #{:duct/logger}
-   :fn  #(apply-web-module % options api-config)})
+  (throw (ex-info (str "duct.module.web.thin-api does not support " ::api ". "
+                       "Use " ::thin-api " instead.")
+                  {})))
 
 (defmethod ig/init-key ::site [_ options]
+  (throw (ex-info (str "duct.module.web.thin-api does not support " ::site) {})))
+
+(defmethod ig/init-key ::thin-api [_ options]
   {:req #{:duct/logger}
-   :fn  #(apply-web-module % options (site-config (get-project-ns % options)))})
+   :fn  #(apply-web-module % options api-config)})
