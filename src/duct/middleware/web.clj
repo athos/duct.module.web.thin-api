@@ -4,7 +4,6 @@
             [muuntaja.core :as mc]
             [muuntaja.middleware :as mm]
             [ring.middleware.defaults :refer [wrap-defaults]]
-            [ring.middleware.stacktrace :refer [wrap-stacktrace]]
             [ring.util.response :as response]
             [duct.core.merge :as merge]))
 
@@ -113,9 +112,6 @@
 
 (defmethod ig/init-key ::webjars [_ _]
   (throw (ex-info (str "duct.module.web.thin-api does not support " ::webjars) {})))
-
-(defmethod ig/init-key ::stacktrace [_ options]
-  #(wrap-stacktrace % options))
 
 (defn- deep-merge [a b]
   (if (and (map? a) (map b))
