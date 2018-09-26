@@ -1,6 +1,6 @@
-# Duct module.web
+# duct.module.web.thin-api
 
-[![Build Status](https://travis-ci.org/duct-framework/module.web.svg?branch=master)](https://travis-ci.org/duct-framework/module.web)
+**Note**: `duct.module.web.thin-api` is currently still under development.
 
 A [Duct][] module that adds a web server and useful middleware to a
 configuration. This is the basis of all web applications built with
@@ -64,7 +64,7 @@ already, then that is used instead.
 
 ## License
 
-Copyright © 2017 James Reeves
+Copyright © 2017-2018 James Reeves, Shogo Ohta
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
